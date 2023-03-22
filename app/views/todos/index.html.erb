@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+<h1>Todos</h1>
+<div id="todos">
+  <ul 
+    data-controller="sortable" 
+    data-sortable-resource-name-value="todo"
+    data-sortable-handle-value=".card">
+    <% @todos.each do |todo| %>
+      <li 
+        class="card" 
+        data-sortable-update-url="<%= update_position_path(todo) %>"
+      >
+        <div class="card-body">
+          <%= todo.title %>
+          <%= link_to "Read More", todo %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<%= link_to "New todo", new_todo_path %>
